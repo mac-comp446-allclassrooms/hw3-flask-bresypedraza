@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="{{ url_for('edit_review', review_id=review.id) if review else url_for('create_review') }}" method="POST">
+        <label for="title">Movie Title</label>
+    <input type="text" id="title" name="title" placeholder="Movie Name"
+           value="{{ review.title if review else '' }}">
+    <br>
+
+    <label for="rating">Rating</label>
+    <select name="rating" id="rating">
+        {% for i in range(1, 6) %}
+        <option value="{{ i }}" {% if review and review.rating == i %}selected{% endif %}>{{ i }}</option>
+        {% endfor %}
+    </select>
+    <br>
+
+    <label for="reviewText">Review</label>
+    <input type="text" id="text" name="text" placeholder="Review"
+           value="{{ review.text if review else '' }}">
+    <br>
+
+    <input type="submit" id="editButton" value="Submit">
+    </form>
+ {% endblock %}

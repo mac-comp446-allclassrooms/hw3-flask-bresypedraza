@@ -1,4 +1,5 @@
-from flask import Flask
+
+from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Integer, String
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
@@ -90,9 +91,36 @@ def reset_db():
 
 @app.route('/')
 def show_all_reviews():
-    return 'Welcome to Movie Theater reviews!'
+    reviews = db_manager.get()
+    num_of_reviews = len(reviews) + 1
+    return render_template("index.html", reviews=reviews, num_of_reviews= num_of_reviews)
 
-  
+@app.route('/review/<review_id>')
+def show_review(review_id):
+    review = db_manager.get(review_id)
+    return render_template("reviewDetails.html", review=review)
+
+@app.route('/createReview',methods=['GET', 'POST'])
+def create_review():
+    if request.method == "POST":
+        title = request.form["title"]
+        text = request.form["text"]
+        rating = int(request.form["rating"])
+        db_manager.create(title, text, rating)
+        return redirect(url_for("show_all_reviews"))
+    return render_template('changeReview.html', review=None )
+
+@app.route('/editReview/<review_id>',methods=['GET', "POST"])
+def edit_review(review_id):
+    review = db_manager.get(review_id)
+    if request.method == "POST":
+        title = request.form["title"]
+        text = request.form["text"]
+        rating = int(request.form["rating"])
+        db_manager.update(review_id, title, text, rating)
+        return redirect(url_for("show_review", review_id= review_id))
+    return render_template('changeReview.html', review = review )
+
 # RUN THE FLASK APP
 if __name__ == "__main__":
     with app.app_context():

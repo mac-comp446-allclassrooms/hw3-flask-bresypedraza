@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> Movie Review </title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+
+    <body>
+        <h1 >  Movie Reviews </h1>
+
+        <nav>
+            <a href ="{{ url_for('show_all_reviews', filename='app.py')}}">Reviews Page</a>
+            <a href ="{{ url_for('create_review', filename='app.py')}}">Add Review</a>
+        </nav>
+        {% block content %}
+        {% endblock %}
+
+    </body>
+</html>

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table>
+    <tr>
+        <th> Movie </th>
+        <th> Rating </th>
+        <th> Review </th>
+    </tr>
+    {%for review in reviews%}
+    <tr> 
+        <td> 
+            <a id =reviewLink href="{{ url_for('show_review', review_id=review.id) }}">
+            {{review.title}} 
+        </td>
+        <td> {{review.rating}} </td>
+        <td> {{review.tex}} </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
