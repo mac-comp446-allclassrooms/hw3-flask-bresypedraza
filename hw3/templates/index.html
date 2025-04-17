@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<table>
+    <tr>
+        <th> Movie </th>
+        <th> Rating </th>
+        <th> Review </th>
+        <th> Edit Functions</th>
+    </tr>
+    {%for review in reviews%}
+    <tr> 
+        <td> 
+            <a id =reviewLink href="{{ url_for('show_review', review_id=review.id) }}"> {{review.title}} </a>
+        </td>
+        <td> 
+            {% for i in range(review.rating) %}
+                <span class="star"> &#9733;</span>
+            {% endfor %}
+        </td>
+        <td> 
+            {{review.text}}
+        </td>
+        <td>
+            <a href="{{ url_for('edit_review', review_id=review.id) }}">Edit</a> 
+            <a href="{{ url_for('delete_review', review_id=review.id)}}" >Delete</a>
+        </td>
+
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
