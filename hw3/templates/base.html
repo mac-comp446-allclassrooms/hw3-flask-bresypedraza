@@ -9,8 +9,8 @@
         <h1 >  Movie Reviews </h1>
 
         <nav>
-            <a href ="{{ url_for('show_all_reviews', filename='app.py')}}">Reviews Page</a>
-            <a href ="{{ url_for('create_review', filename='app.py')}}">Add Review</a>
+            <a href ="{{ url_for('show_all_reviews')}}">Reviews Page</a>
+            <a href ="{{ url_for('create_review')}}">Add Review</a>
         </nav>
         {% block content %}
         {% endblock %}

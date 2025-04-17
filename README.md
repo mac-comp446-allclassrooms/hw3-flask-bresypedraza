@@ -11,5 +11,5 @@ Sources:
 - https://www.w3schools.com/TAgs/att_button_formmethod.asp  
 - https://www.w3schools.com/howto/howto_css_style_header.asp  
 - https://flask.palletsprojects.com/en/stable/quickstart/#redirects-and-errors  
-- https://www.tutorialspoint.com/flask/flask_redirect_and_errors.htm  
-
+- https://www.tutorialspoint.com/flask/flask_redirect_and_errors.htm   
+- https://www.geeksforgeeks.org star-rating-using-html-css-and-javascript/  

@@ -118,6 +118,10 @@ h3{
   transition: background-color 0.3s;
 }
 
+.star {
+  color: gold;
+}
+
 
 /* Review Form Styling */
 form {

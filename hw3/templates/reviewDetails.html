@@ -5,7 +5,11 @@
     <h2> {{ review.title }}</h2>
 
     <h3> Rating </h3>
-    <p id="reviewRatingDetails"> {{ review.rating}} </p>
+    <p id="reviewRatingDetails">
+        {% for i in range(review.rating) %}
+            <span class="star">&#9733;</span>
+        {% endfor %}
+    </p>
 
     <h3> Review </h3>
     <p id="reviewTextDetails"> {{ review.text}} </p>
